@@ -1,0 +1,8 @@
+
+
+# Virtual Env
+.\.venv\Scripts\activate
+
+
+# Main directory
+cd dyslexia-llm

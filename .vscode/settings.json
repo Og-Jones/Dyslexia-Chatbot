@@ -1,0 +1,7 @@
+{
+    "python.defaultInterpreterPath": ".venv/Scripts/python.exe",
+    "python.analysis.extraPaths": [
+        "./dyslexia-llm",
+        "./.venv/Lib/site-packages"
+    ]
+}
