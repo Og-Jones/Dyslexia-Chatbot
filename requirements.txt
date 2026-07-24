@@ -9,3 +9,4 @@ Wikipedia-API>=0.8,<1.0
 numpy>=2.0,<3.0
 semantic-text-splitter>=0.1,<1.0
 clean-text>=0.6,<1.0
+chromadb>=0.5,<1.0
