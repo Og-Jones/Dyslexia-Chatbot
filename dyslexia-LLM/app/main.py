@@ -1,6 +1,6 @@
 from sources.wikipedia_source import get_article
 from chunking import chunk_text_with_embeddings
-from store import store_chunks
+from app.DB_actions.store import store_chunks
 
 def main():
     article = get_article("Dyslexia")
@@ -27,5 +27,12 @@ def main():
             )
         )
         
+    print(f"Article: {article.title}")
+    print(f"Sections: {len(article.sections)}")
+    print(f"Chunks: {len(all_chunks)}")
+        
     # Store everything in ChromaDB
     store_chunks(all_chunks)
+    
+if __name__ == "__main__":
+    main()
