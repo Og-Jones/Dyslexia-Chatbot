@@ -1,12 +1,12 @@
 from sources.wikipedia_source import get_article
-from chunking import chunk_text
+from chunking import chunk_text_with_embeddings
 
 article = get_article("Dyslexia")
 
 all_chunks = []
 
 all_chunks.extend(
-    chunk_text(
+    chunk_text_with_embeddings(
         title=article.title,
         url=article.url,
         section="Summary",
@@ -16,7 +16,7 @@ all_chunks.extend(
 
 for section in article.sections:
     all_chunks.extend(
-        chunk_text(
+        chunk_text_with_embeddings(
             title=article.title,
             url=article.url,
             section=section.title,
