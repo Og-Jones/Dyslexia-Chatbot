@@ -1,0 +1,195 @@
+/* Reset */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f8;
+    color: #1f2933;
+}
+
+/* Main page */
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+/* Header */
+h1 {
+    margin: 0 0 10px;
+    font-size: 32px;
+    color: #172b4d;
+}
+
+h2 {
+    margin-top: 0;
+    color: #172b4d;
+}
+
+p {
+    line-height: 1.7;
+}
+
+.description {
+    margin-bottom: 30px;
+    color: #52606d;
+}
+
+/* Question area */
+textarea {
+    width: 100%;
+    min-height: 140px;
+    padding: 16px;
+
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+
+    background: white;
+
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 1.5;
+
+    resize: vertical;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* Button */
+button {
+    margin-top: 15px;
+
+    padding: 12px 24px;
+
+    border: none;
+    border-radius: 7px;
+
+    background: #2563eb;
+    color: white;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.1s ease;
+}
+
+button:hover:not(:disabled) {
+    background: #1d4ed8;
+}
+
+button:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+button:disabled {
+    background: #94a3b8;
+    cursor: not-allowed;
+}
+
+/* Loading */
+#loading {
+    margin-top: 20px;
+
+    color: #52606d;
+    font-size: 15px;
+}
+
+/* Error */
+#error {
+    margin-top: 20px;
+    padding: 15px;
+
+    border-radius: 7px;
+
+    background: #fee2e2;
+    border: 1px solid #fecaca;
+
+    color: #991b1b;
+}
+
+/* Result */
+#result {
+    margin-top: 35px;
+}
+
+/* Answer */
+#answer {
+    padding: 20px;
+
+    background: white;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+
+    line-height: 1.7;
+
+    box-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Sources */
+#sources {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#sources a {
+    display: block;
+
+    padding: 14px 16px;
+
+    background: white;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 7px;
+
+    color: #2563eb;
+    text-decoration: none;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+#sources a:hover {
+    background: #eff6ff;
+    border-color: #93c5fd;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+
+    main {
+        padding: 35px 15px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    textarea {
+        min-height: 120px;
+    }
+
+    button {
+        width: 100%;
+    }
+}
