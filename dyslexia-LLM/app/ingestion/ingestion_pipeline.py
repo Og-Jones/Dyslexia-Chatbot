@@ -9,7 +9,7 @@ MAX_SECTION_CHARS = 5000
 # Semantic text splitter
 splitter = TextSplitter(2500)
 
-def chunk_document(document: Document) -> list[TextChunk]:
+def chunk_document(document: Document, section: str) -> list[TextChunk]:
 
     text = document.text.strip()
 
@@ -26,11 +26,11 @@ def chunk_document(document: Document) -> list[TextChunk]:
     # return a list of text chunks
     return [
         TextChunk(
-            chunk_id=f"{document.title}-{index}",
+            chunk_id=f"{document.title}-{section}-{index}",
             source=document.source,
             title=document.title,
             url=document.url,
-            section=None,
+            section=section,
             text=part,
         )
         for index, part in enumerate(parts)
@@ -64,12 +64,10 @@ def embed_chunks(chunks: list[TextChunk]) -> list[TextChunk]:
         )
     ]
     
-def ingest_document(document: Document) -> list[TextChunk]:
+def ingest_document(document: Document, section: str) -> list[TextChunk]:
 
     # 1. Chunk the document
-    chunks = chunk_document(document)
+    chunks = chunk_document(document, section)
 
     # 2. Create embeddings for those chunks
-    embedded_chunks = embed_chunks(chunks)
-
-    return embedded_chunks
+    return embed_chunks(chunks)

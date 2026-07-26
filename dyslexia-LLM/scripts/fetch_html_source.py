@@ -7,14 +7,17 @@ WEBSITES = [
     WebsiteSource(
         url="https://www.dyslexiacornwall.org.uk/what-is-dyslexia/",
         source="Dyslexia Cornwall",
+        section="What is Dyslexia",
     ),
     WebsiteSource(
         url="https://www.dyslexiacornwall.org.uk/what-is-dyslexia/identifying-dyslexia/",
         source="Dyslexia Cornwall",
+        section="Identifying Dyslexia",
     ),
     WebsiteSource(
         url="https://www.dyslexiacornwall.org.uk/am-i-dyslexic/",
         source="Dyslexia Cornwall",
+        section="Am I Dyslexic?",
     ),
 ]
 
@@ -26,7 +29,7 @@ def main():
         print(f"\nFetching: {website.url}")
         
         document = get_website(url=website.url, source=website.source)
-        chunks = ingest_document(document)
+        chunks = ingest_document(document, website.section)
         all_chunks.extend(chunks)
 
         print(f"Article: {document.title}")

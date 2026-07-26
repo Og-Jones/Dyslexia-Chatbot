@@ -5,6 +5,7 @@ from datetime import datetime
 class WebsiteSource:
     url: str
     source: str
+    section: str
 
 @dataclass
 class Document:
