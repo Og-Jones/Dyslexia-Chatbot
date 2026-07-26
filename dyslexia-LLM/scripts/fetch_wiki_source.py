@@ -1,6 +1,6 @@
-from sources.wikipedia_source import get_article
-from chunking import chunk_text_with_embeddings
-from app.DB_actions.store import store_chunks
+from app.sources.wikipedia_source import get_article
+from app.ingestion.chunking import chunk_text_with_embeddings
+from app.database.db_actions import store_chunks
 
 def main():
     article = get_article("Dyslexia")

@@ -1,6 +1,6 @@
 from openai import OpenAI
-from DB_actions.retrieve import retrieve_chunks
-from prompts import SYSTEM_PROMPT, create_rag_prompt
+from app.database.db_actions import retrieve_chunks
+from app.prompts.rag_prompts import SYSTEM_PROMPT, create_rag_prompt
 
 client = OpenAI()
 MODEL = "gpt-4o-mini"

@@ -3,6 +3,8 @@
 # Virtual Env
 .\.venv\Scripts\activate
 
-
 # Main directory
 cd dyslexia-llm
+
+# Run Main
+python -m app.main

@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 from semantic_text_splitter import TextSplitter
-from embeddings import create_embeddings
+from app.ingestion.embeddings import create_embeddings
 @dataclass(frozen=True)
 class TextChunk:
     chunk_id: str
