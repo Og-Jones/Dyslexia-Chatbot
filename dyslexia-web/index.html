@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dyslexia Knowledge Bot</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main>
+        <h1>Dyslexia Knowledge Bot</h1>
+
+        <p>Ask a question about dyslexia.</p>
+
+        <textarea
+            id="question"
+            placeholder="What are the signs of dyslexia?"
+        ></textarea>
+
+        <button id="ask-button">
+            Ask Question
+        </button>
+
+        <div id="loading" hidden>
+            Thinking...
+        </div>
+
+        <div id="error" hidden></div>
+
+        <section id="result" hidden>
+
+            <h2>Answer</h2>
+
+            <p id="answer"></p>
+
+            <h2>Sources</h2>
+
+            <div id="sources"></div>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

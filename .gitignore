@@ -1,18 +1,32 @@
-# Python virtual environment 
-venv/ 
-.venv/ 
-env/ 
+# Python virtual environments
+venv/
+.venv/
+env/
 
-# Environment variables / secrets 
-.env 
+# Environment variables / secrets
+.env
 .env.*
-
-# VS Code settings
-**/.vscode/
-.vscode/
 
 # Python cache files
 __pycache__/
+*.py[cod]
 
-# Chroma DB
+# VS Code settings
+.vscode/
+
+# ChromaDB
 chroma_db/
+
+# Python build / packaging
+build/
+dist/
+*.egg-info/
+
+# Test / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# OS files
+.DS_Store
+Thumbs.db
