@@ -1,32 +1,35 @@
-from app.ingestion.chunking import chunk_text_with_embeddings
+from app.ingestion.ingestion_pipeline import ingest_document
 from app.database.db_actions import store_chunks
-
 from app.sources.html_source import get_website
+from app.models.dataclasses import WebsiteSource
 
 WEBSITES = [
-        "https://www.dyslexiacornwall.org.uk/what-is-dyslexia/",
-        "https://www.dyslexiacornwall.org.uk/what-is-dyslexia/identifying-dyslexia/",
-        "https://www.dyslexiacornwall.org.uk/am-i-dyslexic/"
+    WebsiteSource(
+        url="https://www.dyslexiacornwall.org.uk/what-is-dyslexia/",
+        source="Dyslexia Cornwall",
+    ),
+    WebsiteSource(
+        url="https://www.dyslexiacornwall.org.uk/what-is-dyslexia/identifying-dyslexia/",
+        source="Dyslexia Cornwall",
+    ),
+    WebsiteSource(
+        url="https://www.dyslexiacornwall.org.uk/am-i-dyslexic/",
+        source="Dyslexia Cornwall",
+    ),
 ]
 
 def main():
     all_chunks = []
 
-    for url in WEBSITES:
+    for website in WEBSITES:
         
-        print(f"\nFetching: {url}")
-        article = get_website(url)
+        print(f"\nFetching: {website.url}")
         
-        all_chunks.extend(
-            chunk_text_with_embeddings(
-                title=article.title,
-                url=article.url,
-                section="Website Content",
-                text=article.text,
-            )
-        )
+        document = get_website(url=website.url, source=website.source)
+        chunks = ingest_document(document)
+        all_chunks.extend(chunks)
 
-        print(f"Article: {article.title}")
+        print(f"Article: {document.title}")
         print(f"Chunks: {len(all_chunks)}")
         
     print(f"\nTotal chunks: {len(all_chunks)}")

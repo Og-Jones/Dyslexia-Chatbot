@@ -1,14 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
-from dataclasses import dataclass
 
-@dataclass
-class WebsiteArticle:
-    title: str
-    url: str
-    text: str
+from app.models.dataclasses import Document
 
-def get_website(url: str) -> WebsiteArticle:
+def get_website(url: str, source: str) -> Document:
 
     response = requests.get(
         url,
@@ -26,8 +21,9 @@ def get_website(url: str) -> WebsiteArticle:
     paragraphs = soup.find_all("p")
     text = "\n\n".join(paragraph.get_text(" ", strip=True) for paragraph in paragraphs)
     
-    return WebsiteArticle(
+    return Document(
         title=title,
         url=url,
         text=text,
+        source=source,
     )
