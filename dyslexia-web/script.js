@@ -1,5 +1,5 @@
 "use strict";
-const API_URL = "https://YOUR-RENDER-API.onrender.com";
+const API_URL = "https://dyslexia-chatbot.onrender.com";
 const questionInput = document.getElementById("question");
 const askButton = document.getElementById("ask-button");
 const loading = document.getElementById("loading");
