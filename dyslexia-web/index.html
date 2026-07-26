@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,13 +13,22 @@
 <body>
 
     <main>
-        <h1>Dyslexia Knowledge Bot</h1>
+        <header>
+            <h1>Dyslexia Knowledge Bot</h1>
+            <p>Ask a question about dyslexia and get an answer based on trusted sources.</p>
+        </header>
 
-        <p>Ask a question about dyslexia.</p>
+        <section class="question">
+            <textarea
+                id="question"
+                placeholder="Ask a question..."
+                aria-label="Your question"
+            ></textarea>
 
-        <textarea id="question"></textarea>
-
-        <button id="ask-button"> Ask Question</button>
+            <button id="ask-button">
+                Ask
+            </button>
+        </section>
 
         <div id="loading" hidden>
             Thinking...
@@ -28,13 +38,15 @@
 
         <section id="result" hidden>
 
-            <h2>Answer</h2>
+            <div class="answer-section">
+                <h2>Answer</h2>
+                <p id="answer"></p>
+            </div>
 
-            <p id="answer"></p>
-
-            <h2>Sources</h2>
-
-            <div id="sources"></div>
+            <div class="sources-section">
+                <h2>Sources</h2>
+                <div id="sources"></div>
+            </div>
 
         </section>
 
