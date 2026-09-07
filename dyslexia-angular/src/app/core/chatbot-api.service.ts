@@ -10,7 +10,7 @@ import { AskResponse } from '../models/ask-response';
 export class ChatbotApiService {
     private readonly http = inject(HttpClient);
 
-    private readonly apiUrl = 'http://127.0.0.1:8000';
+    private readonly apiUrl = 'https://dyslexia-chatbot.onrender.com';
 
     askQuestion(question: string): Observable<AskResponse> {
         return this.http.post<AskResponse>(
