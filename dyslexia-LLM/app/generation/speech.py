@@ -3,7 +3,7 @@ from openai import OpenAI
 client = OpenAI()
 
 TTS_MODEL = "gpt-4o-mini-tts"
-TTS_VOICE = "cedar"
+TTS_VOICE = "marin"
 
 def generate_speech(text: str) -> bytes:
     

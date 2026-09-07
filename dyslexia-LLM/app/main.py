@@ -17,6 +17,7 @@ app.add_middleware(
         "http://127.0.0.1:4200",
         
         # production urls
+        "https://dyslexia-chatbot-gfa7.onrender.com"
     ],
     allow_credentials=True,
     allow_methods=["GET", "POST"],
