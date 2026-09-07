@@ -1,0 +1,136 @@
+<main class="chatbot">
+    <header class="page-header">
+        <h1>Dyslexia Assistant</h1>
+
+        <p>
+            Ask a question about dyslexia
+        </p>
+    </header>
+
+    <form
+        class="question-form"
+        (ngSubmit)="askQuestion()"
+    >
+        <label for="question">
+            Your question
+        </label>
+
+        <textarea
+            id="question"
+            name="question"
+            [(ngModel)]="question"
+            placeholder="Ask a question..."
+            rows="4"
+            [disabled]="isLoadingAnswer"
+        ></textarea>
+
+        <button
+            type="submit"
+            [disabled]="
+                !question.trim() ||
+                isLoadingAnswer
+            "
+        >
+            @if (isLoadingAnswer) {
+                Thinking...
+            } @else {
+                Ask question
+            }
+        </button>
+    </form>
+
+    @if (isLoadingAnswer) {
+        <div
+            class="status-message"
+            role="status"
+            aria-live="polite"
+        >
+            Finding information and preparing your answer...
+        </div>
+    }
+
+    @if (errorMessage) {
+        <div
+            class="error-message"
+            role="alert"
+        >
+            {{ errorMessage }}
+        </div>
+    }
+
+    @if (response; as currentResponse) {
+        <section class="result">
+            <article class="answer-section">
+                <h2>Answer</h2>
+
+                <p class="answer">
+                    {{ currentResponse.answer }}
+                </p>
+
+                <div class="audio-section">
+                    <button
+                        type="button"
+                        class="listen-button"
+                        (click)="listenToAnswer()"
+                        [disabled]="isLoadingAudio"
+                        aria-controls="audio-player"
+                    >
+                        @if (isLoadingAudio) {
+                            Preparing audio...
+                        } @else {
+                            Listen to answer
+                        }
+                    </button>
+
+                    @if (isLoadingAudio) {
+                        <div
+                            class="status-message"
+                            role="status"
+                            aria-live="polite"
+                        >
+                            Creating the spoken answer...
+                        </div>
+                    }
+
+                    <audio
+                        #audioPlayer
+                        id="audio-player"
+                        controls
+                        preload="none"
+                        [src]="audioUrl ?? ''"
+                        [hidden]="!audioUrl"
+                    >
+                        Your browser does not support audio playback.
+                    </audio>
+                </div>
+            </article>
+
+            <section class="sources-section">
+                <h2>Sources</h2>
+
+                @if (currentResponse.sources.length > 0) {
+                    <ul class="source-list">
+                        @for (
+                            source of currentResponse.sources;
+                            track source.url + source.section
+                        ) {
+                            <li>
+                                <a
+                                    [href]="source.url"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    {{ source.title }}
+                                    —
+                                    {{ source.section ?? 'Website' }}
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                } @else {
+                    <p>No sources were returned.</p>
+                }
+            </section>
+        </section>
+    }
+</main>

@@ -1,0 +1,34 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #315c72;
+    --primary-dark: #26495b;
+    --primary-light: #eaf3f6;
+    --background: #f5f8fa;
+    --surface: #ffffff;
+    --text: #24343d;
+    --muted: #6b7b84;
+    --border: #dce6ea;
+    --error: #a94442;
+}
+
+html {
+    min-width: 320px;
+    min-height: 100%;
+    background: var(--background);
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    background: var(--background);
+    color: var(--text);
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+}

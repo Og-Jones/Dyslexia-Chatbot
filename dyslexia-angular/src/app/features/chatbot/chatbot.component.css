@@ -1,0 +1,271 @@
+:host {
+    display: block;
+}
+
+/* Page */
+
+.chatbot {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 70px 24px;
+}
+
+/* Header */
+
+.page-header {
+    margin-bottom: 30px;
+}
+
+.page-header h1 {
+    margin: 0 0 8px;
+    color: var(--primary);
+    font-size: 32px;
+    font-weight: 650;
+    letter-spacing: -0.6px;
+}
+
+.page-header p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Question form */
+
+.question-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.question-form label {
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.question-form textarea {
+    width: 100%;
+    min-height: 130px;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 1.6;
+    resize: vertical;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.question-form textarea::placeholder {
+    color: #9aa8af;
+}
+
+.question-form textarea:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow:
+        0 0 0 3px rgb(49 92 114 / 12%);
+}
+
+/* Buttons */
+
+button {
+    align-self: flex-start;
+    padding: 11px 20px;
+    border: none;
+    border-radius: 7px;
+    background: var(--primary);
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        transform 0.1s ease;
+}
+
+button:hover:not(:disabled) {
+    background: var(--primary-dark);
+}
+
+button:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+button:focus-visible {
+    outline: 3px solid rgb(49 92 114 / 25%);
+    outline-offset: 3px;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+/* Status and errors */
+
+.status-message {
+    margin-top: 18px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.error-message {
+    margin-top: 20px;
+    padding: 12px 14px;
+    border: 1px solid #efd2d2;
+    border-radius: 7px;
+    background: #fff7f7;
+    color: var(--error);
+    font-size: 14px;
+}
+
+/* Results */
+
+.result {
+    display: block;
+    margin-top: 42px;
+}
+
+.answer-section,
+.sources-section {
+    padding: 0;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+}
+
+.answer-section {
+    margin-bottom: 30px;
+}
+
+.answer-section h2,
+.sources-section h2 {
+    margin: 0 0 12px;
+    color: var(--primary);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Answer */
+
+.answer {
+    margin: 0;
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--primary);
+    border-radius: 8px;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.8;
+    white-space: pre-wrap;
+}
+
+/* Audio */
+
+.audio-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.listen-button {
+    background: var(--primary);
+}
+
+audio {
+    width: 100%;
+    max-width: 460px;
+    height: 42px;
+}
+
+audio[hidden] {
+    display: none;
+}
+
+/* Sources */
+
+.sources-section {
+    margin-top: 0;
+}
+
+.source-list {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    list-style: none;
+}
+
+.source-list li {
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.source-list li:last-child {
+    border-bottom: none;
+}
+
+.source-list a {
+    display: block;
+    padding: 11px 14px;
+    color: var(--primary);
+    font-size: 14px;
+    line-height: 1.5;
+    text-decoration: none;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.source-list a:hover {
+    background: var(--primary-light);
+    color: var(--primary-dark);
+}
+
+.source-list a:focus-visible {
+    outline: 3px solid rgb(49 92 114 / 25%);
+    outline-offset: -3px;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+    .chatbot {
+        padding: 45px 18px;
+    }
+
+    .page-header h1 {
+        font-size: 27px;
+    }
+
+    .page-header p {
+        font-size: 15px;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .answer {
+        padding: 16px;
+    }
+
+    audio {
+        max-width: none;
+    }
+}
