@@ -11,11 +11,16 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://dyslexia-chatbot-gfa7.onrender.com",
+        
+        # development urls
+        "http://localhost:4200",
+        "http://127.0.0.1:4200",
+        
+        # production urls
     ],
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["GET", "POST"],
+    allow_headers=["Content-Type"],
 )
 
 app.include_router(router)
