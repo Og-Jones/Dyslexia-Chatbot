@@ -1,0 +1,150 @@
+/* Makes the question input component occupy its own block. */
+:host {
+    display: block;
+}
+
+/* Arranges the heading, composer and keyboard hint vertically. */
+.question-section {
+    display: grid;
+    gap: 10px;
+}
+
+.question-section h2 {
+    margin: 0;
+}
+
+/* Creates the rounded container around the textarea and button. */
+.question-composer {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    padding: 8px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--surface);
+    box-shadow:
+        0 4px 16px rgb(36 52 61 / 6%);
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* Highlights the complete composer when its textarea is focused. */
+.question-composer:focus-within {
+    border-color: var(--primary);
+    box-shadow:
+        0 0 0 3px rgb(49 92 114 / 12%),
+        0 4px 16px rgb(36 52 61 / 6%);
+}
+
+
+/* Controls the textarea layout and automatic resizing behaviour. */
+textarea {
+    flex: 1;
+    min-width: 0;
+    min-height: 48px;
+    max-height: 180px;
+    margin: 0;
+    padding: 12px;
+    overflow-y: auto;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    line-height: 1.6;
+    resize: none;
+}
+
+
+/*
+ * Prevents a second focus outline around the textarea.
+ * The parent composer already displays the focus indicator.
+ */
+textarea:focus-visible {
+    outline: none;
+}
+
+
+/* Shows that the textarea cannot currently be used. */
+textarea:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+}
+
+
+/* Styles the submit button within this component. */
+button {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 44px;
+    padding: 0 16px;
+    border: none;
+    border-radius: 11px;
+    background: var(--primary);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 650;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        transform 0.1s ease;
+}
+
+
+/* Darkens the button when it is hovered and enabled. */
+button:hover:not(:disabled) {
+    background: var(--primary-dark);
+}
+
+
+/* Moves the button slightly when it is pressed. */
+button:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+
+/* Shows that the button cannot currently be used. */
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+}
+
+
+/* Styles the Enter and Shift + Enter instructions. */
+.keyboard-hint {
+    margin: 0;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+
+/* Adjusts the composer for narrow mobile screens. */
+@media (max-width: 480px) {
+    .question-composer {
+        gap: 6px;
+        padding: 6px;
+    }
+
+    /* Changes the submit button into a square icon button. */
+    button {
+        width: 44px;
+        padding: 0;
+    }
+
+    /*
+     * Visually hides the word "Ask" on mobile while retaining
+     * it for assistive technology.
+     */
+    button span {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+    }
+}
