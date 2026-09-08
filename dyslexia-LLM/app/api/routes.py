@@ -16,7 +16,7 @@ class SpeechRequest(BaseModel):
 class SourceResponse(BaseModel):
     source: str
     title: str
-    section: str
+    sections: list[str]
     url: str
 
 class AnswerResponse(BaseModel):
@@ -32,32 +32,33 @@ def ask_question(request: QuestionRequest,):
 
     answer, metadatas = generate_answer(query=request.question)
 
-    sources = []
-
-    displayed_sources = set()
+    sources_by_url: dict[str, dict] = {}
 
     for metadata in metadatas:
+        
+        # Sources must be from unique URLs
+        url = metadata["url"]
+        normalised_url = url.rstrip("/") # remove trailing slah for comparrison
+        
+        section = metadata.get("section")
+        
+        if normalised_url not in sources_by_url:
+            sources_by_url[normalised_url] = {
+                "source": metadata["source"],
+                "title": metadata["title"],
+                "sections": [],
+                "url": url,
+            }
+        
+        sections = sources_by_url[normalised_url]["sections"]
 
-        source_key = (
-            metadata["source"],
-            metadata["title"],
-            metadata["section"],
-            metadata["url"],
-        )
-
-        if source_key in displayed_sources:
-            continue
-
-        displayed_sources.add(source_key)
-
-        sources.append(
-            SourceResponse(
-                source=metadata["source"],
-                title=metadata["title"],
-                section=metadata["section"],
-                url=metadata["url"],
-            )
-        )
+        if section and section not in sections:
+            sections.append(section)
+            
+    sources = [
+        SourceResponse(**source)
+        for source in sources_by_url.values()
+    ]
 
     return AnswerResponse(
         answer=answer,

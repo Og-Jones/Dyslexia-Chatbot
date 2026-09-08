@@ -252,17 +252,21 @@ audio::-webkit-media-controls-overflow-button {
 
 /* Makes the source title more prominent. */
 .source-title {
+    color: var(--text);
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
+.source-name {
+    color: var(--primary);
+    font-weight: 650;
+}
 
 /* Styles the source section as secondary information. */
 .source-section {
     color: var(--muted);
     font-size: 12px;
 }
-
 
 /* Styles the message displayed when no sources exist. */
 .no-sources {

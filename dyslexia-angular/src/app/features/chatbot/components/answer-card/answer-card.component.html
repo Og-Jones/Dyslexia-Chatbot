@@ -83,7 +83,7 @@
             <ul class="source-list">
                 @for (
                     source of response.sources;
-                    track source.url + ':' + (source.section ?? '')
+                    track source.url
                 ) {
                     <li>
                         <a
@@ -92,11 +92,19 @@
                             rel="noopener noreferrer"
                         >
                             <span class="source-title">
+                                <span class="source-name">
+                                    {{ source.source }}:
+                                </span>
+
                                 {{ source.title }}
                             </span>
 
                             <span class="source-section">
-                                {{ source.section ?? 'Website' }}
+                                @if (source.sections.length > 0) {
+                                    {{ source.sections.join(' · ') }}
+                                } @else {
+                                    Website
+                                }
                             </span>
                         </a>
                     </li>

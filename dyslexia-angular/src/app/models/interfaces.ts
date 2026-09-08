@@ -1,7 +1,7 @@
 export interface Source {
     source: string;
     title: string;
-    section: string | null;
+    sections: string[];
     url: string;
 }
 
