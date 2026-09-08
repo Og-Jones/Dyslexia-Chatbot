@@ -12,6 +12,7 @@ import { ChatbotApiService } from '../../core/chatbot-api.service';
 import { AskResponse } from '../../models/interfaces';
 import { QuestionInputComponent } from './components/question-input/question-input.component';
 import { AnswerCardComponent } from './components/answer-card/answer-card.component';
+import { INSUFFICIENT_CONTEXT_MESSAGE } from '../../models/constants';
 
 @Component({
     selector: 'app-chatbot',
@@ -58,9 +59,14 @@ export class ChatbotComponent implements OnDestroy {
                     this.response = response;
                     this.isLoadingAnswer = false;
 
-                    this.changeDetector.markForCheck();
+                    // check for the anser is insufficient message
+                    const hasSufficientAnswer = response.answer.trim() !== INSUFFICIENT_CONTEXT_MESSAGE;
+                    
+                    // only gen the audio is the context is suffucient to answer question
+                    if (hasSufficientAnswer) { this.prepareAudio(response.answer); }
+                    else { this.resetAudio(); }
 
-                    this.prepareAudio(response.answer);
+                    this.changeDetector.markForCheck();
                 },
 
                 error: (error) => {

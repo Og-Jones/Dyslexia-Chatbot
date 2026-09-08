@@ -1,0 +1,1 @@
+export const INSUFFICIENT_CONTEXT_MESSAGE = 'The available sources do not provide enough information to answer this question.';
