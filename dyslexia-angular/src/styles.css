@@ -1,34 +1,199 @@
-* {
+/* -----------------------------
+   Global Styles
+----------------------------- */
+
+:root {
+
+    
+    --primary: #315c72; /* Main colour used for headings, buttons and links. */
+    --primary-dark: #26495b; /* Darker main colour, used for hover states. */
+    --primary-light: #eaf3f6; /* Pale main colour, used for subtle backgrounds. */
+
+    --background: #f5f8fa; /* Background colour applied to the overall application page. */
+    --surface: #ffffff; /* Background colour used for cards, inputs and other raised surfaces. */
+
+    --text: #24343d; /* Main colour used for readable body text. */
+    --muted: #6b7b84; /* Lighter text colour used for hints and secondary information. */
+
+    --border: #dce6ea; /* Standard colour used for borders and visual separation. */
+
+    --error: #a94442; /* Text colour used for error messages. */
+    --error-background: #fff7f7; /* Background colour used for error message boxes. */
+    --error-border: #efd2d2; /* Border colour used for error message boxes. */
+
+    --focus-ring: rgb(49 92 114 / 25%); /* Semi-transparent colour used for keyboard focus outlines. */
+
+    /* Defines the font fallback sequence for the app */
+    --font-family:
+        Inter, /* Main font for app */
+        -apple-system, /* For apple devices*/
+        BlinkMacSystemFont, /* Chromium browsers */
+        "Segoe UI", /* Standard Windows interface font. */
+        Arial, /* Fallback font */
+        sans-serif; /* Fallback font */
+}
+
+*, /* selects every HTML element */
+
+*::before,
+
+*::after {
     box-sizing: border-box;
 }
 
-:root {
-    --primary: #315c72;
-    --primary-dark: #26495b;
-    --primary-light: #eaf3f6;
-    --background: #f5f8fa;
-    --surface: #ffffff;
-    --text: #24343d;
-    --muted: #6b7b84;
-    --border: #dce6ea;
-    --error: #a94442;
-}
-
+/* Selects the root <html> element. */
 html {
-    min-width: 320px;
-    min-height: 100%;
-    background: var(--background);
+    min-width: 320px; /* Prevents the layout from becoming narrower than 320 pixels. */
+
+    min-height: 100%; /* Ensures the document can occupy the full browser height. */
+
+    background: var(--background); /* Provides a background if the body does not fill the viewport. */
+
+    font-size: 100%; /* Sets the root font size to the user's browser default, usually 16px. */
 }
 
+/* Selects the visible body of the page. */
 body {
-    min-height: 100vh;
-    margin: 0;
-    background: var(--background);
-    color: var(--text);
-    font-family:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
+    min-height: 100vh; /* Ensures the body is at least as tall as the browser viewport. */
+
+    margin: 0; /* Removes the browser's default outer body spacing. */
+
+    background: var(--background); /* Applies the global page background colour. */
+    color: var(--text); /* Applies the main text colour. */
+    font-family: var(--font-family); /* Applies the shared font sequence defined above. */
+    font-size: 16px; /* Sets the standard body-text size. */
+    line-height: 1.7; /* Adds generous vertical spacing between lines for readability. */
+}
+
+/* -----------------------------
+   Typography
+----------------------------- */
+
+/* Shared declarations between the three heading types */
+h1,
+h2,
+h3 {
+    margin-top: 0;
+    color: var(--primary);
+    line-height: 1.3;
+}
+
+h1 {
+    margin-bottom: 8px;
+    font-size: clamp(27px, 5vw, 32px);
+    font-weight: 650;
+    letter-spacing: -0.6px;
+}
+
+h2 {
+    margin-bottom: 12px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+h3 {
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+small {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+strong {
+    font-weight: 650;
+}
+
+/* -----------------------------
+   Links
+----------------------------- */
+
+a {
+    color: var(--primary);
+    text-underline-offset: 3px;
+}
+
+a:hover {
+    color: var(--primary-dark);
+}
+
+a:focus-visible {
+    border-radius: 3px;
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 3px;
+}
+
+/* -----------------------------
+   Form elements
+----------------------------- */
+
+button,
+input,
+textarea,
+select {
+    color: inherit;
+    font: inherit;
+}
+
+textarea::placeholder,
+input::placeholder {
+    color: #8a989f;
+}
+
+button {
+    font-family: inherit;
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 3px;
+}
+
+/* -----------------------------
+   Lists and media
+----------------------------- */
+ul,
+ol {
+    line-height: 1.7;
+}
+
+audio {
+    font-family: inherit;
+}
+
+/* -----------------------------
+   Shared text classes
+----------------------------- */
+
+.muted-text {
+    color: var(--muted);
+}
+
+.status-text {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.error-text {
+    color: var(--error);
+}
+
+/* -----------------------------
+   Text selection
+----------------------------- */
+
+::selection {
+    background: var(--primary-light);
+    color: var(--primary-dark);
 }

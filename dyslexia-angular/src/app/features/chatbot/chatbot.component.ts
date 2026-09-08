@@ -10,12 +10,13 @@ import {
 import { FormsModule } from '@angular/forms';
 import { ChatbotApiService } from '../../core/chatbot-api.service';
 import { AskResponse } from '../../models/interfaces';
-import { QuestionInputComponent } from '../shared/question-input/question-input.component';
+import { QuestionInputComponent } from './components/question-input/question-input.component';
+import { AnswerCardComponent } from './components/answer-card/answer-card.component';
 
 @Component({
     selector: 'app-chatbot',
     standalone: true,
-    imports: [FormsModule, QuestionInputComponent],
+    imports: [FormsModule, QuestionInputComponent, AnswerCardComponent],
     templateUrl: './chatbot.component.html',
     styleUrl: './chatbot.component.css'
 })
