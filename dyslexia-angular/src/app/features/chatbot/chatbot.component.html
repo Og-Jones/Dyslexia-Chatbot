@@ -7,37 +7,10 @@
         </p>
     </header>
 
-    <form
-        class="question-form"
-        (ngSubmit)="askQuestion()"
-    >
-        <label for="question">
-            Your question
-        </label>
-
-        <textarea
-            id="question"
-            name="question"
-            [(ngModel)]="question"
-            placeholder="Ask a question..."
-            rows="4"
-            [disabled]="isLoadingAnswer"
-        ></textarea>
-
-        <button
-            type="submit"
-            [disabled]="
-                !question.trim() ||
-                isLoadingAnswer
-            "
-        >
-            @if (isLoadingAnswer) {
-                Thinking...
-            } @else {
-                Ask question
-            }
-        </button>
-    </form>
+    <app-question-input
+        [disabled]="isLoadingAnswer"
+        (questionSubmitted)="askQuestion($event)"
+    />
 
     @if (isLoadingAnswer) {
         <div

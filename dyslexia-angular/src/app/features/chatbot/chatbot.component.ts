@@ -8,18 +8,18 @@ import {
 } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
-import { finalize } from 'rxjs';
-
 import { ChatbotApiService } from '../../core/chatbot-api.service';
-import { AskResponse } from '../../models/ask-response';
+import { AskResponse } from '../../models/interfaces';
+import { QuestionInputComponent } from '../shared/question-input/question-input.component';
 
 @Component({
     selector: 'app-chatbot',
     standalone: true,
-    imports: [FormsModule],
+    imports: [FormsModule, QuestionInputComponent],
     templateUrl: './chatbot.component.html',
     styleUrl: './chatbot.component.css'
 })
+
 export class ChatbotComponent implements OnDestroy {
     private readonly chatbotApi = inject(ChatbotApiService);
 
@@ -29,7 +29,6 @@ export class ChatbotComponent implements OnDestroy {
     @ViewChild('audioPlayer')
     private audioPlayer?: ElementRef<HTMLAudioElement>;
 
-    question = '';
     response: AskResponse | null = null;
     errorMessage = '';
 
@@ -38,12 +37,10 @@ export class ChatbotComponent implements OnDestroy {
 
     audioUrl: string | null = null;
 
-    askQuestion(): void {
-        const trimmedQuestion = this.question.trim();
+    askQuestion(question: string): void {
+        const trimmedQuestion = question.trim();
 
-        if (!trimmedQuestion || this.isLoadingAnswer) {
-            return;
-        }
+        if (!trimmedQuestion || this.isLoadingAnswer) {return;}
 
         this.resetAudio();
 
